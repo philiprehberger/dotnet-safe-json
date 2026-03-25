@@ -14,6 +14,8 @@ dotnet add package Philiprehberger.SafeJson
 
 ## Usage
 
+### Parsing and Extracting Values
+
 ```csharp
 using Philiprehberger.SafeJson;
 
@@ -21,21 +23,31 @@ var node = SafeJson.Parse("""{"user": {"name": "Alice", "age": 30}}""");
 
 string name = node.GetString("user.name", "unknown"); // "Alice"
 int age = node.GetInt("user.age", 0);                 // 30
-string missing = node.GetString("user.email", "n/a");  // "n/a"
+bool active = node.GetBool("user.active", false);     // false (missing → default)
+double score = node.GetDouble("user.score", 0.0);     // 0.0 (missing → default)
+```
+
+### Safe Handling of Invalid JSON
+
+```csharp
+using Philiprehberger.SafeJson;
 
 // Invalid JSON returns an empty node — never throws
 var empty = SafeJson.Parse("not valid json");
-string safe = empty.GetString("anything", "default");  // "default"
+string safe = empty.GetString("anything", "default"); // "default"
+bool has = empty.Has("anything");                     // false
+```
 
-// Array access
+### Array Access and Path Navigation
+
+```csharp
+using Philiprehberger.SafeJson;
+
 var json = SafeJson.Parse("""{"items": [{"id": 1}, {"id": 2}]}""");
-int id = json.GetInt("items[0].id", 0);                // 1
 
-// Check existence
-bool has = node.Has("user.name");                      // true
-
-// Get arrays
-SafeJsonNode[] items = json.GetArray("items");         // 2 elements
+int id = json.GetInt("items[0].id", 0);       // 1
+SafeJsonNode[] items = json.GetArray("items"); // 2 elements
+bool exists = json.Has("items[1].id");         // true
 ```
 
 ## API
