@@ -3,6 +3,7 @@
 [![CI](https://github.com/philiprehberger/dotnet-safe-json/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/dotnet-safe-json/actions/workflows/ci.yml)
 [![NuGet](https://img.shields.io/nuget/v/Philiprehberger.SafeJson.svg)](https://www.nuget.org/packages/Philiprehberger.SafeJson)
 [![License](https://img.shields.io/github/license/philiprehberger/dotnet-safe-json)](LICENSE)
+[![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ec6cb9)](https://github.com/sponsors/philiprehberger)
 
 Resilient JSON parsing with fallback defaults and path-based value extraction that never throws.
 
