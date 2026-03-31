@@ -10,7 +10,7 @@
     <RootNamespace>Philiprehberger.SafeJson</RootNamespace>
 
     <PackageId>Philiprehberger.SafeJson</PackageId>
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
     <Authors>Philip Rehberger</Authors>
     <Description>Resilient JSON parsing with fallback defaults and path-based value extraction that never throws.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

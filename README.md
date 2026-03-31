@@ -2,8 +2,7 @@
 
 [![CI](https://github.com/philiprehberger/dotnet-safe-json/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/dotnet-safe-json/actions/workflows/ci.yml)
 [![NuGet](https://img.shields.io/nuget/v/Philiprehberger.SafeJson.svg)](https://www.nuget.org/packages/Philiprehberger.SafeJson)
-[![License](https://img.shields.io/github/license/philiprehberger/dotnet-safe-json)](LICENSE)
-[![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ec6cb9)](https://github.com/sponsors/philiprehberger)
+[![Last updated](https://img.shields.io/github/last-commit/philiprehberger/dotnet-safe-json)](https://github.com/philiprehberger/dotnet-safe-json/commits/main)
 
 Resilient JSON parsing with fallback defaults and path-based value extraction that never throws.
 
@@ -82,6 +81,24 @@ Paths support dot notation (`user.address.city`) and array indexing (`items[0].n
 dotnet build src/Philiprehberger.SafeJson.csproj --configuration Release
 ```
 
+## Support
+
+If you find this project useful:
+
+⭐ [Star the repo](https://github.com/philiprehberger/dotnet-safe-json)
+
+🐛 [Report issues](https://github.com/philiprehberger/dotnet-safe-json/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+
+💡 [Suggest features](https://github.com/philiprehberger/dotnet-safe-json/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement)
+
+❤️ [Sponsor development](https://github.com/sponsors/philiprehberger)
+
+🌐 [All Open Source Projects](https://philiprehberger.com/open-source-packages)
+
+💻 [GitHub Profile](https://github.com/philiprehberger)
+
+🔗 [LinkedIn Profile](https://www.linkedin.com/in/philiprehberger)
+
 ## License
 
-MIT
+[MIT](LICENSE)
