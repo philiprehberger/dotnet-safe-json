@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.0 (2026-04-05)
+
+- Add `GetDateTime(path, defaultValue)` accessor for parsing ISO 8601 date strings
+- Add `GetGuid(path, defaultValue)` accessor for parsing GUID strings
+
 ## 0.1.2 (2026-03-31)
 
 - Standardize README to 3-badge format with emoji Support section

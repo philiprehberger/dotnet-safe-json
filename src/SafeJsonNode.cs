@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text.Json.Nodes;
 
 namespace Philiprehberger.SafeJson;
@@ -126,6 +127,58 @@ public sealed class SafeJsonNode
         {
             var node = PathParser.Resolve(_node, path);
             return node?.GetValue<decimal>() ?? defaultValue;
+        }
+        catch
+        {
+            return defaultValue;
+        }
+    }
+
+    /// <summary>
+    /// Extracts a <see cref="DateTime"/> value at the given dot-notation path by parsing an ISO 8601 string.
+    /// </summary>
+    /// <param name="path">The dot-notation path.</param>
+    /// <param name="defaultValue">The value to return if the path does not exist or cannot be parsed as a date.</param>
+    /// <returns>The parsed <see cref="DateTime"/> at the path, or the default value.</returns>
+    public DateTime GetDateTime(string path, DateTime defaultValue)
+    {
+        try
+        {
+            var node = PathParser.Resolve(_node, path);
+            var str = node?.GetValue<string>();
+
+            if (str is null)
+            {
+                return defaultValue;
+            }
+
+            return DateTime.Parse(str, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind);
+        }
+        catch
+        {
+            return defaultValue;
+        }
+    }
+
+    /// <summary>
+    /// Extracts a <see cref="Guid"/> value at the given dot-notation path by parsing a GUID string.
+    /// </summary>
+    /// <param name="path">The dot-notation path.</param>
+    /// <param name="defaultValue">The value to return if the path does not exist or cannot be parsed as a GUID.</param>
+    /// <returns>The parsed <see cref="Guid"/> at the path, or the default value.</returns>
+    public Guid GetGuid(string path, Guid defaultValue)
+    {
+        try
+        {
+            var node = PathParser.Resolve(_node, path);
+            var str = node?.GetValue<string>();
+
+            if (str is null)
+            {
+                return defaultValue;
+            }
+
+            return Guid.TryParse(str, out var result) ? result : defaultValue;
         }
         catch
         {

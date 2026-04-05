@@ -38,6 +38,21 @@ string safe = empty.GetString("anything", "default"); // "default"
 bool has = empty.Has("anything");                     // false
 ```
 
+### DateTime and GUID Parsing
+
+```csharp
+using Philiprehberger.SafeJson;
+
+var json = SafeJson.Parse("""{"event": {"date": "2026-04-05T10:30:00Z", "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"}}""");
+
+DateTime date = json.GetDateTime("event.date", DateTime.MinValue); // 2026-04-05T10:30:00Z
+Guid id = json.GetGuid("event.id", Guid.Empty);                   // a1b2c3d4-e5f6-7890-abcd-ef1234567890
+
+// Missing or invalid values return the default — never throws
+DateTime missing = json.GetDateTime("event.nope", DateTime.MinValue); // DateTime.MinValue
+Guid invalid = json.GetGuid("event.date", Guid.Empty);               // Guid.Empty
+```
+
 ### Array Access and Path Navigation
 
 ```csharp
@@ -68,6 +83,8 @@ bool exists = json.Has("items[1].id");         // true
 | `GetDouble(path, defaultValue)` | Extract a double value at the given path. |
 | `GetBool(path, defaultValue)` | Extract a bool value at the given path. |
 | `GetDecimal(path, defaultValue)` | Extract a decimal value at the given path. |
+| `GetDateTime(path, defaultValue)` | Parse an ISO 8601 date string at the given path. |
+| `GetGuid(path, defaultValue)` | Parse a GUID string at the given path. |
 | `GetArray(path)` | Extract an array of `SafeJsonNode` at the given path. |
 | `Has(path)` | Check whether a value exists at the given path. |
 | `this[string key]` | Access a child node by key. |
